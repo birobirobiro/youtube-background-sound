@@ -16,13 +16,13 @@ function onYouTubeIframeAPIReady() {
   player = new YT.Player('player', {
     height: '360',
     width: '640',
-    videoId: 'scBNOrdqz2U', // Replace VIDEO_ID with the desired YouTube video ID
+    videoId: 'ir96UnkKIgA', // Replace VIDEO_ID with the desired YouTube video ID
     playerVars: {
       controls: 0,
       showinfo: 0,
       modestbranding: 1,
       loop: 1,
-      playlist: 'scBNOrdqz2U', // Replace VIDEO_ID with the desired YouTube video ID
+      playlist: 'ir96UnkKIgA', // Replace VIDEO_ID with the desired YouTube video ID
       fs: 0,
       cc_load_policy: 0,
       iv_load_policy: 3,

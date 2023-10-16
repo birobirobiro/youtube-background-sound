@@ -36,6 +36,8 @@ function loadVideo() {
 
   if (player && videoID) {
     player.loadVideoById(videoID);
+    document.getElementById('playerVolumeSlider').value = 5; // Resetting the volume to 5
+    changeVolume('player');
   }
 }
 
@@ -63,16 +65,20 @@ function pauseVideo() {
   }
 }
 
-function changeVolume() {
-  if (player) {
-    const volume = document.getElementById('volumeSlider').value;
-    player.setVolume(volume);
-    forestSound.volume = volume / 100;
-    fireplaceSound.volume = volume / 100;
-    oceanSound.volume = volume / 100;
-    keyboardSound.volume = volume / 100;
-    rainSound.volume = volume / 100;
-    cityRainSound.volume = volume / 100;
+function changeVolume(target) {
+  if (target === 'player') {
+    if (player) {
+      const volume = document.getElementById('playerVolumeSlider').value;
+      player.setVolume(volume);
+    }
+  } else if (target === 'sound') {
+    const soundVolume = document.getElementById('soundVolumeSlider').value / 100;
+    forestSound.volume = soundVolume;
+    fireplaceSound.volume = soundVolume;
+    oceanSound.volume = soundVolume;
+    keyboardSound.volume = soundVolume;
+    rainSound.volume = soundVolume;
+    cityRainSound.volume = soundVolume;
   }
 }
 

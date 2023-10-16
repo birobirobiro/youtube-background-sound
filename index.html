@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dracula">
 
 <head>
   <meta charset="UTF-8" />
@@ -15,26 +15,29 @@
 </head>
 
 <body class="flex m-0 p-0 flex h-full w-full">
-  <div class="container flex flex-col mx-auto px-4 sm:px-6 lg:px-8">
+  <div class="container flex flex-col h-full w-full mx-auto justify-center items-center">
     <div id="player" class="fixed top-0 left-0 w-full h-full pointer-events-none"></div>
     <div id="controls"
-      class="fixed flex items-center justify-center gap-14 bg-gray-500 bg-clip-padding backdrop-filter backdrop-blur bg-opacity-50 backdrop-saturate-100 backdrop-contrast-100 rounded-full px-4 py-2 bottom-5">
+      class="fixed flex items-center mx-auto gap-12 bg-gray-500 bg-clip-padding backdrop-filter backdrop-blur bg-opacity-50 backdrop-saturate-100 backdrop-contrast-100 rounded-full p-4 bottom-5">
       <button class="btn bg-transparent border-none" onclick="my_modal_2.showModal()">
-        CHANGE VIDEO URL
+        <i class="ph ph-youtube-logo text-2xl"></i>
       </button>
+
+      <button onclick="playPauseMedia('video')">
+        <i class="ph ph-play-pause text-2xl"></i>
+      </button>
+
       <dialog id="my_modal_2" class="modal">
-        <div class="modal-box">
-          <input class="w-full" type="text" id="videoURL" placeholder="Enter YouTube Video URL"
+        <div class="modal-box flex flex-col gap-2 shadow-[0px_20px_207px_10px_rgba(218,_215,_215,_0.37)]">
+          <label for="videoURL"> Enter YouTube Video URL </label>
+
+          <input class="w-full" type="text" id="videoURL" placeholder="https://www.youtube.com/watch?v=ir96UnkKIgA"
             onkeypress="loadVideo()" />
         </div>
         <form method="dialog" class="modal-backdrop">
           <button>x</button>
         </form>
       </dialog>
-
-      <button onclick="playPauseMedia('video')">
-        <i class="ph ph-play-pause"></i>
-      </button>
 
       <div class="flex items-center gap-2">
         <label for="playerVolumeSlider">Video Volume</label>
@@ -48,32 +51,33 @@
 
       <div>
         <button onclick="playPauseMedia('forestSound')">
-          <i class="ph ph-tree-evergreen"></i>
+          <i class="ph ph-tree-evergreen text-2xl"></i>
         </button>
       </div>
-      <div class="hover:scale-125 transition ease-in duration-300">
+
+      <div>
         <button onclick="playPauseMedia('fireplaceSound')">
-          <i class="ph ph-fire"></i>
+          <i class="ph ph-fire text-2xl"></i>
         </button>
       </div>
       <div>
         <button onclick="playPauseMedia('oceanSound')">
-          <i class="ph ph-waves"></i>
+          <i class="ph ph-waves text-2xl"></i>
         </button>
       </div>
       <div>
         <button onclick="playPauseMedia('keyboardSound')">
-          <i class="ph ph-keyboard"></i>
+          <i class="ph ph-keyboard text-2xl"></i>
         </button>
       </div>
       <div>
         <button onclick="playPauseMedia('rainSound')">
-          <i class="ph ph-cloud-lightning"></i>
+          <i class="ph ph-cloud-lightning text-2xl"></i>
         </button>
       </div>
       <div>
         <button onclick="playPauseMedia('cityRainSound')">
-          <i class="ph ph-cloud-rain"></i>
+          <i class="ph ph-cloud-rain text-2xl"></i>
         </button>
       </div>
     </div>

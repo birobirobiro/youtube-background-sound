@@ -9,7 +9,8 @@
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 - HTML
-- CSS
+- [Tailwind CSS](https://tailwindcss.com/)
+- [daisyUI](https://daisyui.com/)
 - JavaScript
 
 ---

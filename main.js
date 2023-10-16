@@ -1,3 +1,10 @@
+tailwind.config = {
+  daisyui: {
+    themes: ["dracula"],
+  },
+}
+
+
 let player;
 let forestSound, fireplaceSound, oceanSound, keyboardSound, rainSound, cityRainSound;
 

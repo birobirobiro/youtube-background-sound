@@ -19,7 +19,6 @@
     <div id="player" class="fixed top-0 left-0 w-full h-full pointer-events-none scale-125"></div>
     <div id="controls"
       class="fixed flex items-center mx-auto gap-12 bg-gray-500 bg-clip-padding backdrop-filter backdrop-blur bg-opacity-50 backdrop-saturate-100 backdrop-contrast-100 rounded-full p-4 bottom-5">
-
       <div class="tooltip" data-tip="Change Video">
         <button class="btn bg-transparent border-none hover:bg-transparent" onclick="my_modal_2.showModal()">
           <i class="ph ph-youtube-logo text-2xl"></i>
@@ -29,6 +28,12 @@
       <div class="tooltip" data-tip="Play/Pause">
         <button onclick="playPauseMedia('video')">
           <i class="ph ph-play-pause text-2xl"></i>
+        </button>
+      </div>
+
+      <div class="tooltip" data-tip="Full Screen">
+        <button onclick="fullScreen()">
+          <i class="ph ph-arrows-out"></i>
         </button>
       </div>
 
@@ -49,7 +54,6 @@
           <input type="range" min="0" max="100" value="5" id="playerVolumeSlider" onchange="changeVolume('player')" />
         </div>
       </div>
-
 
       <div class="flex items-center gap-2">
         <div class="tooltip" data-tip="Effects Sound Volume">
@@ -104,7 +108,6 @@
           </button>
         </div>
       </div>
-
     </div>
     <audio id="forestSound" src="https://lofico.nyc3.cdn.digitaloceanspaces.com/effects/forest_night.mp3" loop></audio>
     <audio id="fireplaceSound" src="https://lofico.nyc3.cdn.digitaloceanspaces.com/effects/fireplace.mp3" loop></audio>

@@ -19,13 +19,18 @@
     <div id="player" class="fixed top-0 left-0 w-full h-full pointer-events-none"></div>
     <div id="controls"
       class="fixed flex items-center mx-auto gap-12 bg-gray-500 bg-clip-padding backdrop-filter backdrop-blur bg-opacity-50 backdrop-saturate-100 backdrop-contrast-100 rounded-full p-4 bottom-5">
-      <button class="btn bg-transparent border-none" onclick="my_modal_2.showModal()">
-        <i class="ph ph-youtube-logo text-2xl"></i>
-      </button>
 
-      <button onclick="playPauseMedia('video')">
-        <i class="ph ph-play-pause text-2xl"></i>
-      </button>
+      <div class="tooltip" data-tip="Change Video">
+        <button class="btn bg-transparent border-none hover:bg-transparent" onclick="my_modal_2.showModal()">
+          <i class="ph ph-youtube-logo text-2xl"></i>
+        </button>
+      </div>
+
+      <div class="tooltip" data-tip="Play/Pause">
+        <button onclick="playPauseMedia('video')">
+          <i class="ph ph-play-pause text-2xl"></i>
+        </button>
+      </div>
 
       <dialog id="my_modal_2" class="modal">
         <div class="modal-box flex flex-col gap-2 shadow-[0px_20px_207px_10px_rgba(218,_215,_215,_0.37)]">
@@ -40,46 +45,66 @@
       </dialog>
 
       <div class="flex items-center gap-2">
-        <label for="playerVolumeSlider">Video Volume</label>
-        <input type="range" min="0" max="100" value="5" id="playerVolumeSlider" onchange="changeVolume('player')" />
+        <div class="tooltip" data-tip="YouTube Video Volume">
+          <input type="range" min="0" max="100" value="5" id="playerVolumeSlider" onchange="changeVolume('player')" />
+        </div>
       </div>
+
 
       <div class="flex items-center gap-2">
-        <label for="soundVolumeSlider">Effects Volume</label>
-        <input type="range" min="0" max="100" value="5" id="soundVolumeSlider" onchange="changeVolume('sound')" />
+        <div class="tooltip" data-tip="Effects Sound Volume">
+          <input type="range" min="0" max="100" value="5" id="soundVolumeSlider" onchange="changeVolume('sound')" />
+        </div>
       </div>
 
-      <div>
-        <button onclick="playPauseMedia('forestSound')">
-          <i class="ph ph-tree-evergreen text-2xl"></i>
-        </button>
+      <div class="tooltip" data-tip="Forest Sound">
+        <div>
+          <button onclick="playPauseMedia('forestSound')">
+            <i class="ph ph-tree-evergreen text-2xl"></i>
+          </button>
+        </div>
       </div>
 
-      <div>
-        <button onclick="playPauseMedia('fireplaceSound')">
-          <i class="ph ph-fire text-2xl"></i>
-        </button>
+      <div class="tooltip" data-tip="Fireplace Sound">
+        <div>
+          <button onclick="playPauseMedia('fireplaceSound')">
+            <i class="ph ph-fire text-2xl"></i>
+          </button>
+        </div>
       </div>
-      <div>
-        <button onclick="playPauseMedia('oceanSound')">
-          <i class="ph ph-waves text-2xl"></i>
-        </button>
+
+      <div class="tooltip" data-tip="Ocean Sound">
+        <div>
+          <button onclick="playPauseMedia('oceanSound')">
+            <i class="ph ph-waves text-2xl"></i>
+          </button>
+        </div>
       </div>
-      <div>
-        <button onclick="playPauseMedia('keyboardSound')">
-          <i class="ph ph-keyboard text-2xl"></i>
-        </button>
+
+      <div class="tooltip" data-tip="Keyboard Sound">
+        <div>
+          <button onclick="playPauseMedia('keyboardSound')">
+            <i class="ph ph-keyboard text-2xl"></i>
+          </button>
+        </div>
       </div>
-      <div>
-        <button onclick="playPauseMedia('rainSound')">
-          <i class="ph ph-cloud-lightning text-2xl"></i>
-        </button>
+
+      <div class="tooltip" data-tip="Rain Sound">
+        <div>
+          <button onclick="playPauseMedia('rainSound')">
+            <i class="ph ph-cloud-lightning text-2xl"></i>
+          </button>
+        </div>
       </div>
-      <div>
-        <button onclick="playPauseMedia('cityRainSound')">
-          <i class="ph ph-cloud-rain text-2xl"></i>
-        </button>
+
+      <div class="tooltip" data-tip="City Rain Sound">
+        <div>
+          <button onclick="playPauseMedia('cityRainSound')">
+            <i class="ph ph-cloud-rain text-2xl"></i>
+          </button>
+        </div>
       </div>
+
     </div>
     <audio id="forestSound" src="https://lofico.nyc3.cdn.digitaloceanspaces.com/effects/forest_night.mp3" loop></audio>
     <audio id="fireplaceSound" src="https://lofico.nyc3.cdn.digitaloceanspaces.com/effects/fireplace.mp3" loop></audio>

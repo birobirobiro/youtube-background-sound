@@ -16,18 +16,37 @@ function onYouTubeIframeAPIReady() {
   player = new YT.Player('player', {
     height: '360',
     width: '640',
+    videoId: 'scBNOrdqz2U', // Replace VIDEO_ID with the desired YouTube video ID
     playerVars: {
       controls: 0,
       showinfo: 0,
       modestbranding: 1,
       loop: 1,
-      playlist: 'VIDEO_ID',
+      playlist: 'scBNOrdqz2U', // Replace VIDEO_ID with the desired YouTube video ID
       fs: 0,
       cc_load_policy: 0,
       iv_load_policy: 3,
-      autohide: 0
+      autohide: 0,
+      autoplay: 1 // Enable autoplay
+    },
+    events: {
+      'onReady': onPlayerReady
     }
   });
+}
+
+function onPlayerReady(event) {
+  event.target.setVolume(5); // Set the YouTube player volume to 5 when the player is ready
+  setInitialVolumeForAudios(5); // Set the initial volume for the external audio elements
+}
+
+function setInitialVolumeForAudios(volume) {
+  forestSound.volume = volume / 100;
+  fireplaceSound.volume = volume / 100;
+  oceanSound.volume = volume / 100;
+  keyboardSound.volume = volume / 100;
+  rainSound.volume = volume / 100;
+  cityRainSound.volume = volume / 100;
 }
 
 function loadVideo() {

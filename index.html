@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Background YouTube Video Player</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #000;
+    }
+
+    #player {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    #controls {
+      position: fixed;
+      bottom: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="player"></div>
+  <div id="controls">
+    <input type="text" id="videoURL" placeholder="Enter YouTube Video URL">
+    <button onclick="loadVideo()">Load Video</button>
+    <button onclick="playVideo()">Play</button>
+    <button onclick="pauseVideo()">Pause</button>
+
+    <input type="range" min="0" max="100" value="100" id="playerVolumeSlider" onchange="changeVolume('player')">
+    <input type="range" min="0" max="100" value="100" id="soundVolumeSlider" onchange="changeVolume('sound')">
+    <div>
+      <button onclick="playSound('forestSound')">Play Forest Sound</button>
+      <button onclick="pauseSound('forestSound')">Pause Forest Sound</button>
+    </div>
+    <div>
+      <button onclick="playSound('fireplaceSound')">Play Fireplace Sound</button>
+      <button onclick="pauseSound('fireplaceSound')">Pause Fireplace Sound</button>
+    </div>
+    <div>
+      <button onclick="playSound('oceanSound')">Play Ocean Sound</button>
+      <button onclick="pauseSound('oceanSound')">Pause Ocean Sound</button>
+    </div>
+    <div>
+      <button onclick="playSound('keyboardSound')">Play Keyboard Sound</button>
+      <button onclick="pauseSound('keyboardSound')">Pause Keyboard Sound</button>
+    </div>
+    <div>
+      <button onclick="playSound('rainSound')">Play Rain Sound</button>
+      <button onclick="pauseSound('rainSound')">Pause Rain Sound</button>
+    </div>
+    <div>
+      <button onclick="playSound('cityRainSound')">Play City Rain Sound</button>
+      <button onclick="pauseSound('cityRainSound')">Pause City Rain Sound</button>
+    </div>
+  </div>
+
+  <audio id="forestSound" src="https://lofico.nyc3.cdn.digitaloceanspaces.com/effects/forest_night.mp3" loop></audio>
+  <audio id="fireplaceSound" src="https://lofico.nyc3.cdn.digitaloceanspaces.com/effects/fireplace.mp3" loop></audio>
+  <audio id="oceanSound" src="https://lofico.nyc3.cdn.digitaloceanspaces.com/effects/ocean.mp3" loop></audio>
+  <audio id="keyboardSound" src="https://lofico.nyc3.cdn.digitaloceanspaces.com/effects/keyboard.mp3" loop></audio>
+  <audio id="rainSound" src="https://lofico.nyc3.cdn.digitaloceanspaces.com/effects/window_rain.mp3" loop></audio>
+  <audio id="cityRainSound" src="https://lofico.nyc3.cdn.digitaloceanspaces.com/effects/rain_city.mp3" loop></audio>
+
+  <script>
+    let player;
+    let forestSound = document.getElementById('forestSound');
+    let fireplaceSound = document.getElementById('fireplaceSound');
+    let oceanSound = document.getElementById('oceanSound');
+    let keyboardSound = document.getElementById('keyboardSound');
+    let rainSound = document.getElementById('rainSound');
+    let cityRainSound = document.getElementById('cityRainSound');
+
+    // Load the YouTube IFrame Player API code asynchronously.
+    const tag = document.createElement('script');
+    tag.src = 'https://www.youtube.com/iframe_api';
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        height: '360',
+        width: '640',
+        playerVars: {
+          controls: 0,
+          showinfo: 0,
+          modestbranding: 1,
+          loop: 1,
+          playlist: 'VIDEO_ID',
+          fs: 0,
+          cc_load_policy: 0,
+          iv_load_policy: 3,
+          autohide: 0
+        }
+      });
+    }
+
+    function loadVideo() {
+      const videoURL = document.getElementById('videoURL').value;
+      const videoID = extractVideoID(videoURL);
+
+      if (player && videoID) {
+        player.loadVideoById(videoID);
+      }
+    }
+
+    function playVideo() {
+      if (player) {
+        player.playVideo();
+        forestSound.play();
+        fireplaceSound.play();
+        oceanSound.play();
+        keyboardSound.play();
+        rainSound.play();
+        cityRainSound.play();
+      }
+    }
+
+    function pauseVideo() {
+      if (player) {
+        player.pauseVideo();
+        forestSound.pause();
+        fireplaceSound.pause();
+        oceanSound.pause();
+        keyboardSound.pause();
+        rainSound.pause();
+        cityRainSound.pause();
+      }
+    }
+
+    function changeVolume() {
+      if (player) {
+        const volume = document.getElementById('volumeSlider').value;
+        player.setVolume(volume);
+        forestSound.volume = volume / 100;
+        fireplaceSound.volume = volume / 100;
+        oceanSound.volume = volume / 100;
+        keyboardSound.volume = volume / 100;
+        rainSound.volume = volume / 100;
+        cityRainSound.volume = volume / 100;
+      }
+    }
+
+    function extractVideoID(url) {
+      const regExp = /(?:\?v=|\/embed\/|\/v\/|youtu\.be\/|\/watch\?v=|\/watch\?feature=player_embed&v=|\/videos\/|embed\/|watch\?v=|v=|\/embed\/)([a-zA-Z0-9_-]{11})/;
+      const match = url.match(regExp);
+      return (match && match[1]) || null;
+    }
+
+    function playSound(soundId) {
+      const sound = document.getElementById(soundId);
+      if (sound) {
+        sound.play();
+      }
+    }
+
+    function pauseSound(soundId) {
+      const sound = document.getElementById(soundId);
+      if (sound) {
+        sound.pause();
+      }
+    }
+
+    function changeVolume(target) {
+      if (target === 'player') {
+        if (player) {
+          const volume = document.getElementById('playerVolumeSlider').value;
+          player.setVolume(volume);
+        }
+      } else if (target === 'sound') {
+        const soundVolume = document.getElementById('soundVolumeSlider').value / 100;
+        forestSound.volume = soundVolume;
+        fireplaceSound.volume = soundVolume;
+        oceanSound.volume = soundVolume;
+        keyboardSound.volume = soundVolume;
+        rainSound.volume = soundVolume;
+        cityRainSound.volume = soundVolume;
+      }
+    }
+
+  </script>
+</body>
+
+</html>

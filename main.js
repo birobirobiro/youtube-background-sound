@@ -1,10 +1,5 @@
 let player;
-let forestSound = document.getElementById('forestSound');
-let fireplaceSound = document.getElementById('fireplaceSound');
-let oceanSound = document.getElementById('oceanSound');
-let keyboardSound = document.getElementById('keyboardSound');
-let rainSound = document.getElementById('rainSound');
-let cityRainSound = document.getElementById('cityRainSound');
+let forestSound, fireplaceSound, oceanSound, keyboardSound, rainSound, cityRainSound;
 
 // Load the YouTube IFrame Player API code asynchronously.
 const tag = document.createElement('script');
@@ -12,10 +7,23 @@ tag.src = 'https://www.youtube.com/iframe_api';
 const firstScriptTag = document.getElementsByTagName('script')[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
+function initializeAudios() {
+  forestSound = document.getElementById('forestSound');
+  fireplaceSound = document.getElementById('fireplaceSound');
+  oceanSound = document.getElementById('oceanSound');
+  keyboardSound = document.getElementById('keyboardSound');
+  rainSound = document.getElementById('rainSound');
+  cityRainSound = document.getElementById('cityRainSound');
+}
+
+function setInitialVolumeForAudios(volume) {
+  [forestSound, fireplaceSound, oceanSound, keyboardSound, rainSound, cityRainSound].forEach(sound => {
+    sound.volume = volume / 100;
+  });
+}
+
 function onYouTubeIframeAPIReady() {
   player = new YT.Player('player', {
-    height: '360',
-    width: '640',
     videoId: 'ir96UnkKIgA', // Replace VIDEO_ID with the desired YouTube video ID
     playerVars: {
       controls: 0,
@@ -40,47 +48,12 @@ function onPlayerReady(event) {
   setInitialVolumeForAudios(5); // Set the initial volume for the external audio elements
 }
 
-function setInitialVolumeForAudios(volume) {
-  forestSound.volume = volume / 100;
-  fireplaceSound.volume = volume / 100;
-  oceanSound.volume = volume / 100;
-  keyboardSound.volume = volume / 100;
-  rainSound.volume = volume / 100;
-  cityRainSound.volume = volume / 100;
-}
-
 function loadVideo() {
   const videoURL = document.getElementById('videoURL').value;
   const videoID = extractVideoID(videoURL);
 
   if (player && videoID) {
     player.loadVideoById(videoID);
-    document.getElementById('playerVolumeSlider').value = 5; // Resetting the volume to 5
-    changeVolume('player');
-  }
-}
-
-function playVideo() {
-  if (player) {
-    player.playVideo();
-    forestSound.play();
-    fireplaceSound.play();
-    oceanSound.play();
-    keyboardSound.play();
-    rainSound.play();
-    cityRainSound.play();
-  }
-}
-
-function pauseVideo() {
-  if (player) {
-    player.pauseVideo();
-    forestSound.pause();
-    fireplaceSound.pause();
-    oceanSound.pause();
-    keyboardSound.pause();
-    rainSound.pause();
-    cityRainSound.pause();
   }
 }
 
@@ -92,12 +65,7 @@ function changeVolume(target) {
     }
   } else if (target === 'sound') {
     const soundVolume = document.getElementById('soundVolumeSlider').value / 100;
-    forestSound.volume = soundVolume;
-    fireplaceSound.volume = soundVolume;
-    oceanSound.volume = soundVolume;
-    keyboardSound.volume = soundVolume;
-    rainSound.volume = soundVolume;
-    cityRainSound.volume = soundVolume;
+    setInitialVolumeForAudios(soundVolume * 100);
   }
 }
 
@@ -107,33 +75,29 @@ function extractVideoID(url) {
   return (match && match[1]) || null;
 }
 
-function playSound(soundId) {
-  const sound = document.getElementById(soundId);
-  if (sound) {
-    sound.play();
-  }
-}
+let isVideoPlaying = false;
 
-function pauseSound(soundId) {
-  const sound = document.getElementById(soundId);
-  if (sound) {
-    sound.pause();
-  }
-}
-
-function changeVolume(target) {
-  if (target === 'player') {
+function playPauseMedia(mediaId) {
+  if (mediaId === 'video') {
     if (player) {
-      const volume = document.getElementById('playerVolumeSlider').value;
-      player.setVolume(volume);
+      if (isVideoPlaying) {
+        player.pauseVideo();
+        isVideoPlaying = false;
+      } else {
+        player.playVideo();
+        isVideoPlaying = true;
+      }
     }
-  } else if (target === 'sound') {
-    const soundVolume = document.getElementById('soundVolumeSlider').value / 100;
-    forestSound.volume = soundVolume;
-    fireplaceSound.volume = soundVolume;
-    oceanSound.volume = soundVolume;
-    keyboardSound.volume = soundVolume;
-    rainSound.volume = soundVolume;
-    cityRainSound.volume = soundVolume;
+  } else {
+    const sound = document.getElementById(mediaId);
+    if (sound) {
+      if (sound.paused) {
+        sound.play();
+      } else {
+        sound.pause();
+      }
+    }
   }
 }
+
+initializeAudios();

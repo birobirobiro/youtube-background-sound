@@ -7,7 +7,6 @@
   <title>Background YouTube Video Player</title>
   <link rel="stylesheet" href="style.css">
   <script src="main.js" defer></script>
-
   <link rel="shortcut icon" href="favicon.png" type="image/x-png">
 </head>
 
@@ -16,44 +15,34 @@
   <div id="controls">
     <input type="text" id="videoURL" placeholder="Enter YouTube Video URL">
     <button onclick="loadVideo()">Load Video</button>
-    <button onclick="playVideo()">Play</button>
-    <button onclick="pauseVideo()">Pause</button>
-
+    <button onclick="playPauseMedia('video')">Play/Pause</button>
     <input type="range" min="0" max="100" value="5" id="playerVolumeSlider" onchange="changeVolume('player')">
     <input type="range" min="0" max="100" value="5" id="soundVolumeSlider" onchange="changeVolume('sound')">
     <div>
-      <button onclick="playSound('forestSound')">Play Forest Sound</button>
-      <button onclick="pauseSound('forestSound')">Pause Forest Sound</button>
+      <button onclick="playPauseMedia('forestSound')">Play Forest Sound</button>
     </div>
     <div>
-      <button onclick="playSound('fireplaceSound')">Play Fireplace Sound</button>
-      <button onclick="pauseSound('fireplaceSound')">Pause Fireplace Sound</button>
+      <button onclick="playPauseMedia('fireplaceSound')">Play Fireplace Sound</button>
     </div>
     <div>
-      <button onclick="playSound('oceanSound')">Play Ocean Sound</button>
-      <button onclick="pauseSound('oceanSound')">Pause Ocean Sound</button>
+      <button onclick="playPauseMedia('oceanSound')">Play Ocean Sound</button>
     </div>
     <div>
-      <button onclick="playSound('keyboardSound')">Play Keyboard Sound</button>
-      <button onclick="pauseSound('keyboardSound')">Pause Keyboard Sound</button>
+      <button onclick="playPauseMedia('keyboardSound')">Play Keyboard Sound</button>
     </div>
     <div>
-      <button onclick="playSound('rainSound')">Play Rain Sound</button>
-      <button onclick="pauseSound('rainSound')">Pause Rain Sound</button>
+      <button onclick="playPauseMedia('rainSound')">Play Rain Sound</button>
     </div>
     <div>
-      <button onclick="playSound('cityRainSound')">Play City Rain Sound</button>
-      <button onclick="pauseSound('cityRainSound')">Pause City Rain Sound</button>
+      <button onclick="playPauseMedia('cityRainSound')">Play City Rain Sound</button>
     </div>
   </div>
-
   <audio id="forestSound" src="https://lofico.nyc3.cdn.digitaloceanspaces.com/effects/forest_night.mp3" loop></audio>
   <audio id="fireplaceSound" src="https://lofico.nyc3.cdn.digitaloceanspaces.com/effects/fireplace.mp3" loop></audio>
   <audio id="oceanSound" src="https://lofico.nyc3.cdn.digitaloceanspaces.com/effects/ocean.mp3" loop></audio>
   <audio id="keyboardSound" src="https://lofico.nyc3.cdn.digitaloceanspaces.com/effects/keyboard.mp3" loop></audio>
   <audio id="rainSound" src="https://lofico.nyc3.cdn.digitaloceanspaces.com/effects/window_rain.mp3" loop></audio>
   <audio id="cityRainSound" src="https://lofico.nyc3.cdn.digitaloceanspaces.com/effects/rain_city.mp3" loop></audio>
-
 </body>
 
 </html>

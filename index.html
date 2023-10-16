@@ -2,31 +2,30 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Background YouTube Video Player</title>
-  <!-- <link rel="stylesheet" href="style.css"> -->
   <script src="main.js" defer></script>
-  <link rel="shortcut icon" href="favicon.png" type="image/x-png">
+  <link rel="shortcut icon" href="favicon.png" type="image/x-png" />
 
   <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.2/dist/full.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
 
   <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
 </head>
 
 <body class="flex m-0 p-0 flex h-full w-full">
   <div class="container flex flex-col mx-auto px-4 sm:px-6 lg:px-8">
     <div id="player" class="fixed top-0 left-0 w-full h-full pointer-events-none"></div>
     <div id="controls"
-      class="fixed flex items-center justify-center gap-14 bg-gray-500 bg-clip-padding backdrop-filter  backdrop-blur bg-opacity-50 backdrop-saturate-100 backdrop-contrast-100 rounded-full px-4 py-2 bottom-5">
-
-      <button class="btn bg-transparent border-none" onclick="my_modal_2.showModal()">CHANGE VIDEO URL</button>
+      class="fixed flex items-center justify-center gap-14 bg-gray-500 bg-clip-padding backdrop-filter backdrop-blur bg-opacity-50 backdrop-saturate-100 backdrop-contrast-100 rounded-full px-4 py-2 bottom-5">
+      <button class="btn bg-transparent border-none" onclick="my_modal_2.showModal()">
+        CHANGE VIDEO URL
+      </button>
       <dialog id="my_modal_2" class="modal">
         <div class="modal-box">
           <input class="w-full" type="text" id="videoURL" placeholder="Enter YouTube Video URL"
-            onkeypress="loadVideo()">
+            onkeypress="loadVideo()" />
         </div>
         <form method="dialog" class="modal-backdrop">
           <button>x</button>
@@ -38,17 +37,13 @@
       </button>
 
       <div class="flex items-center gap-2">
-        <label for="playerVolumeSlider">
-          Video Volume
-        </label>
-        <input type="range" min="0" max="100" value="5" id="playerVolumeSlider" onchange="changeVolume('player')">
+        <label for="playerVolumeSlider">Video Volume</label>
+        <input type="range" min="0" max="100" value="5" id="playerVolumeSlider" onchange="changeVolume('player')" />
       </div>
 
       <div class="flex items-center gap-2">
-        <label for="soundVolumeSlider">
-          Effects Volume
-        </label>
-        <input type="range" min="0" max="100" value="5" id="soundVolumeSlider" onchange="changeVolume('sound')">
+        <label for="soundVolumeSlider">Effects Volume</label>
+        <input type="range" min="0" max="100" value="5" id="soundVolumeSlider" onchange="changeVolume('sound')" />
       </div>
 
       <div>

@@ -95,3 +95,20 @@ function pauseSound(soundId) {
     sound.pause();
   }
 }
+
+function changeVolume(target) {
+  if (target === 'player') {
+    if (player) {
+      const volume = document.getElementById('playerVolumeSlider').value;
+      player.setVolume(volume);
+    }
+  } else if (target === 'sound') {
+    const soundVolume = document.getElementById('soundVolumeSlider').value / 100;
+    forestSound.volume = soundVolume;
+    fireplaceSound.volume = soundVolume;
+    oceanSound.volume = soundVolume;
+    keyboardSound.volume = soundVolume;
+    rainSound.volume = soundVolume;
+    cityRainSound.volume = soundVolume;
+  }
+}

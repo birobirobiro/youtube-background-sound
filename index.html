@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Youtube Background Sound</title>
   <script src="main.js" defer></script>
-  <link rel="shortcut icon" href="favicon.svg" type="image/x-svg" />
+  <link rel="shortcut icon" href="/assets/image/favicon.svg" type="image/x-svg" />
 
   <link href="https://cdn.jsdelivr.net/npm/daisyui@3.9.2/dist/full.css" rel="stylesheet" type="text/css" />
   <script src="https://cdn.tailwindcss.com"></script>
@@ -37,7 +37,7 @@
     <div
       class="fixed bottom-5 left-4 z-50 bg-gray-500 bg-clip-padding backdrop-filter backdrop-blur bg-opacity-50 backdrop-saturate-100 backdrop-contrast-100 rounded-lg p-1 hover:scale-105 cursor-pointer transition ease-in-out duration-300">
       <a href="https://birobirobiro.dev" target="_blank">
-        <img src="./assets/logo.svg" alt="" class="w-12 h-12">
+        <img src="./assets/image/logo.svg" alt="" class="w-12 h-12">
       </a>
     </div>
     <div id="player" class="fixed top-0 left-0 w-full h-full pointer-events-none scale-125"></div>
@@ -123,9 +123,9 @@
         </div>
       </div>
 
-      <div class="tooltip" data-tip="Rain Sound">
+      <div class="tooltip" data-tip="Storm Rain Sound">
         <div>
-          <button onclick="playPauseMedia('rainSound')">
+          <button onclick="playPauseMedia('stormRainSound')">
             <i class="ph ph-cloud-lightning text-2xl"></i>
           </button>
         </div>
@@ -139,12 +139,12 @@
         </div>
       </div>
     </div>
-    <audio id="forestSound" src="https://lofico.nyc3.cdn.digitaloceanspaces.com/effects/forest_night.mp3" loop></audio>
-    <audio id="fireplaceSound" src="https://lofico.nyc3.cdn.digitaloceanspaces.com/effects/fireplace.mp3" loop></audio>
-    <audio id="oceanSound" src="https://lofico.nyc3.cdn.digitaloceanspaces.com/effects/ocean.mp3" loop></audio>
-    <audio id="keyboardSound" src="https://lofico.nyc3.cdn.digitaloceanspaces.com/effects/keyboard.mp3" loop></audio>
-    <audio id="rainSound" src="https://lofico.nyc3.cdn.digitaloceanspaces.com/effects/window_rain.mp3" loop></audio>
-    <audio id="cityRainSound" src="https://lofico.nyc3.cdn.digitaloceanspaces.com/effects/rain_city.mp3" loop></audio>
+    <audio id="forestSound" src="./assets/audio/forest_night.mp3" loop></audio>
+    <audio id="fireplaceSound" src="./assets/audio/fireplace.mp3" loop></audio>
+    <audio id="oceanSound" src="./assets/audio/ocean.mp3" loop></audio>
+    <audio id="keyboardSound" src="./assets/audio/keyboard.mp3" loop></audio>
+    <audio id="stormRainSound" src="./assets/audio/summer_storm.mp3" loop></audio>
+    <audio id="cityRainSound" src="./assets/audio/rain_city.mp3" loop></audio>
   </div>
 </body>
 

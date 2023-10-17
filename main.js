@@ -9,7 +9,7 @@ let forestSound,
   fireplaceSound,
   oceanSound,
   keyboardSound,
-  rainSound,
+  stormRainSound,
   cityRainSound
 
 const tag = document.createElement("script")
@@ -22,7 +22,7 @@ function initializeAudios() {
   fireplaceSound = document.getElementById("fireplaceSound")
   oceanSound = document.getElementById("oceanSound")
   keyboardSound = document.getElementById("keyboardSound")
-  rainSound = document.getElementById("rainSound")
+  stormRainSound = document.getElementById("stormRainSound")
   cityRainSound = document.getElementById("cityRainSound")
 }
 
@@ -32,7 +32,7 @@ function setInitialVolumeForAudios(volume) {
     fireplaceSound,
     oceanSound,
     keyboardSound,
-    rainSound,
+    stormRainSound,
     cityRainSound,
   ].forEach((sound) => {
     sound.volume = volume / 100

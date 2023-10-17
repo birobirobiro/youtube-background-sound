@@ -41,8 +41,14 @@
         <div class="modal-box flex flex-col gap-2 shadow-[0px_20px_207px_10px_rgba(218,_215,_215,_0.37)]">
           <label for="videoURL"> Enter YouTube Video URL </label>
 
-          <input class="w-full" type="text" id="videoURL" placeholder="https://www.youtube.com/watch?v=ir96UnkKIgA"
-            onkeypress="loadVideo()" />
+          <div class="flex gap-4 align-center">
+            <input class="w-full rounded-md pl-2" type="text" id="videoURL"
+              placeholder="https://www.youtube.com/watch?v=ir96UnkKIgA" onkeypress="loadVideo()" />
+
+            <button class="btn bg-[#3B3B3B] hover:bg-[#4B4B4B] border-none" type="button" onclick="loadVideo()">
+              <i class="ph ph-play"></i>
+          </div>
+          </button>
         </div>
         <form method="dialog" class="modal-backdrop">
           <button>x</button>

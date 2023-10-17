@@ -10,7 +10,8 @@ let forestSound,
   oceanSound,
   keyboardSound,
   stormRainSound,
-  cityRainSound
+  cityRainSound,
+  birdSingSound
 
 const tag = document.createElement("script")
 tag.src = "https://www.youtube.com/iframe_api"
@@ -24,6 +25,7 @@ function initializeAudios() {
   keyboardSound = document.getElementById("keyboardSound")
   stormRainSound = document.getElementById("stormRainSound")
   cityRainSound = document.getElementById("cityRainSound")
+  birdSingSound = document.getElementById("birdSingSound")
 }
 
 function setInitialVolumeForAudios(volume) {
@@ -34,6 +36,7 @@ function setInitialVolumeForAudios(volume) {
     keyboardSound,
     stormRainSound,
     cityRainSound,
+    birdSingSound,
   ].forEach((sound) => {
     sound.volume = volume / 100
   })

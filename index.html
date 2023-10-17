@@ -35,7 +35,7 @@
 <body class="flex m-0 p-0 flex h-full w-full">
   <div class="container flex flex-col h-full w-full mx-auto justify-center items-center">
     <div
-      class="fixed bottom-5 left-4 z-50 bg-gray-500 bg-clip-padding backdrop-filter backdrop-blur bg-opacity-50 backdrop-saturate-100 backdrop-contrast-100 rounded-lg p-1 hover:scale-105 cursor-pointer transition ease-in-out duration-300">
+      class="fixed bottom-5 right-4 z-50 bg-gray-500 bg-clip-padding backdrop-filter backdrop-blur bg-opacity-50 backdrop-saturate-100 backdrop-contrast-100 rounded-lg p-1 hover:scale-105 cursor-pointer transition ease-in-out duration-300">
       <a href="https://birobirobiro.dev" target="_blank">
         <img src="./assets/image/logo.svg" alt="" class="w-12 h-12">
       </a>
@@ -55,9 +55,44 @@
         </button>
       </div>
 
+      <div class="tooltip" data-tip="Stop all Sounds">
+        <button onclick="StopAllSounds()">
+          <i class="ph ph-stop text-2xl"></i>
+        </button>
+      </div>
+
+      <div class="tooltip" data-tip="Volume">
+        <button onclick="showVolumeControls()">
+          <i class="ph ph-speaker-high text-2xl"></i>
+        </button>
+      </div>
+
+      <div id="volumeControls"
+        class="absolute top-[-80px] right-0 z-50 left-0 bg-gray-500 bg-clip-padding backdrop-filter backdrop-blur bg-opacity-50 backdrop-saturate-100 backdrop-contrast-100 rounded-full p-4 justify-center items-center flex gap-4 hidden">
+        <div class="tooltip" data-tip="YouTube Video Volume">
+          <input type="range" min="0" max="100" value="5" id="playerVolumeSlider" onchange="changeVolume('player')" />
+        </div>
+
+        <div class="tooltip" data-tip="Effects Sound Volume">
+          <input type="range" min="0" max="100" value="5" id="soundVolumeSlider" onchange="changeVolume('sound')" />
+        </div>
+      </div>
+
+      <div class="tooltip" data-tip="Ambient Sounds">
+        <button onclick="showAmbientSounds()">
+          <i class="ph ph-sliders text-2xl"></i>
+        </button>
+      </div>
+
+      <div class="tooltip" data-tip="Fit Screen">
+        <button onclick="FitScreen()">
+          <i class="ph ph-frame-corners text-2xl"></i>
+        </button>
+      </div>
+
       <div class="tooltip" data-tip="Full Screen">
         <button onclick="toggleFullScreen()">
-          <i class="ph ph-arrows-out"></i>
+          <i class="ph ph-arrows-out text-2xl"></i>
         </button>
       </div>
 
@@ -78,16 +113,16 @@
           <button>x</button>
         </form>
       </dialog>
+    </div>
 
-      <div class="flex items-center gap-2">
-        <div class="tooltip" data-tip="YouTube Video Volume">
-          <input type="range" min="0" max="100" value="5" id="playerVolumeSlider" onchange="changeVolume('player')" />
-        </div>
-      </div>
+    <div id="ambientSounds"
+      class="absolute bottom-[200px] z-50 bg-gray-500 bg-clip-padding backdrop-filter backdrop-blur bg-opacity-80 backdrop-saturate-100 backdrop-contrast-100 rounded-md p-4 justify-center items-center gap-4 grid grid-cols-5 transition ease-in-out duration-300 hidden">
 
-      <div class="flex items-center gap-2">
-        <div class="tooltip" data-tip="Effects Sound Volume">
-          <input type="range" min="0" max="100" value="5" id="soundVolumeSlider" onchange="changeVolume('sound')" />
+      <div class="tooltip" data-tip="Coffe Shop Sound">
+        <div>
+          <button onclick="playPauseMedia('coffeeShopSound')">
+            <i class="ph ph-coffee text-2xl"></i>
+          </button>
         </div>
       </div>
 
@@ -95,6 +130,14 @@
         <div>
           <button onclick="playPauseMedia('forestSound')">
             <i class="ph ph-tree-evergreen text-2xl"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="tooltip" data-tip="Birds Sound">
+        <div>
+          <button onclick="playPauseMedia('birdsSound')">
+            <i class="ph ph-bird text-2xl"></i>
           </button>
         </div>
       </div>
@@ -115,14 +158,6 @@
         </div>
       </div>
 
-      <div class="tooltip" data-tip="Keyboard Sound">
-        <div>
-          <button onclick="playPauseMedia('keyboardSound')">
-            <i class="ph ph-keyboard text-2xl"></i>
-          </button>
-        </div>
-      </div>
-
       <div class="tooltip" data-tip="Storm Rain Sound">
         <div>
           <button onclick="playPauseMedia('stormRainSound')">
@@ -138,13 +173,44 @@
           </button>
         </div>
       </div>
+
+      <div class="tooltip" data-tip="Snow Sound">
+        <div>
+          <button onclick="playPauseMedia('snowSound')">
+            <i class="ph ph-snowflake text-2xl"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="tooltip" data-tip="Underwater">
+        <div>
+          <button onclick="playPauseMedia('underwaterSound')">
+            <i class="ph ph-swimming-pool text-2xl"></i>
+          </button>
+        </div>
+      </div>
+
+      <div class="tooltip" data-tip="Keyboard Sound">
+        <div>
+          <button onclick="playPauseMedia('keyboardSound')">
+            <i class="ph ph-keyboard text-2xl"></i>
+          </button>
+        </div>
+      </div>
     </div>
-    <audio id="forestSound" src="./assets/audio/forest_night.mp3" loop></audio>
-    <audio id="fireplaceSound" src="./assets/audio/fireplace.mp3" loop></audio>
-    <audio id="oceanSound" src="./assets/audio/ocean.mp3" loop></audio>
-    <audio id="keyboardSound" src="./assets/audio/keyboard.mp3" loop></audio>
-    <audio id="stormRainSound" src="./assets/audio/summer_storm.mp3" loop></audio>
-    <audio id="cityRainSound" src="./assets/audio/rain_city.mp3" loop></audio>
+
+    <div id="audios">
+      <audio id="forestSound" src="./assets/audio/forest_night.mp3" loop></audio>
+      <audio id="fireplaceSound" src="./assets/audio/fireplace.mp3" loop></audio>
+      <audio id="oceanSound" src="./assets/audio/ocean.mp3" loop></audio>
+      <audio id="keyboardSound" src="./assets/audio/keyboard.mp3" loop></audio>
+      <audio id="stormRainSound" src="./assets/audio/summer_storm.mp3" loop></audio>
+      <audio id="cityRainSound" src="./assets/audio/rain_city.mp3" loop></audio>
+      <audio id="underwaterSound" src="./assets/audio/underwater.mp3" loop></audio>
+      <audio id="birdsSound" src="./assets/audio/birds.mp3" loop></audio>
+      <audio id="coffeeShopSound" src="./assets/audio/coffee.mp3" loop></audio>
+      <audio id="snowSound" src="./assets/audio/snow.mp3" loop></audio>
+    </div>
   </div>
 </body>
 

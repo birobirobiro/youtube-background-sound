@@ -10,7 +10,11 @@ let forestSound,
   oceanSound,
   keyboardSound,
   stormRainSound,
-  cityRainSound
+  cityRainSound,
+  underwaterSound,
+  birdsSound,
+  snowSound,
+  coffeeShopSound
 
 const tag = document.createElement("script")
 tag.src = "https://www.youtube.com/iframe_api"
@@ -24,6 +28,10 @@ function initializeAudios() {
   keyboardSound = document.getElementById("keyboardSound")
   stormRainSound = document.getElementById("stormRainSound")
   cityRainSound = document.getElementById("cityRainSound")
+  snowSound = document.getElementById("snowSound")
+  birdsSound = document.getElementById("birdsSound")
+  coffeeShopSound = document.getElementById("coffeeShopSound")
+  underwaterSound = document.getElementById("underwaterSound")
 }
 
 function setInitialVolumeForAudios(volume) {
@@ -34,6 +42,10 @@ function setInitialVolumeForAudios(volume) {
     keyboardSound,
     stormRainSound,
     cityRainSound,
+    snowSound,
+    birdsSound,
+    coffeeShopSound,
+    underwaterSound,
   ].forEach((sound) => {
     sound.volume = volume / 100
   })
@@ -143,6 +155,51 @@ function playPauseMedia(mediaId) {
       }
     }
   }
+}
+
+function FitScreen() {
+  let player = document.getElementById('player');
+  if (player) {
+    if (player.classList.contains('scale-125')) {
+      player.classList.remove('scale-125');
+    } else {
+      player.classList.add('scale-125');
+    }
+  } else {
+    console.error("Player element not found!");
+  }
+}
+
+function showAmbientSounds() {
+  AmbientSounds = document.getElementById("ambientSounds")
+  if (AmbientSounds) {
+    AmbientSounds.classList.toggle("hidden");
+  } else {
+    console.error("Player element not found!");
+  }
+}
+
+function showVolumeControls() {
+  VolumeControls = document.getElementById("volumeControls")
+  if (VolumeControls) {
+    VolumeControls.classList.toggle("hidden");
+  } else {
+    console.error("Player element not found!");
+  }
+}
+
+function StopAllSounds() {
+  player.pauseVideo()
+  forestSound.pause()
+  fireplaceSound.pause()
+  oceanSound.pause()
+  keyboardSound.pause()
+  stormRainSound.pause()
+  cityRainSound.pause()
+  snowSound.pause()
+  birdsSound.pause()
+  coffeeShopSound.pause()
+  underwaterSound.pause()
 }
 
 let isFullScreen = false;

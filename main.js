@@ -53,13 +53,13 @@ function setInitialVolumeForAudios(volume) {
 
 function onYouTubeIframeAPIReady() {
   player = new YT.Player("player", {
-    videoId: "ir96UnkKIgA",
+    videoId: "S0zv1GMBRtE",
     playerVars: {
       controls: 0,
       showinfo: 0,
       modestbranding: 1,
       loop: 1,
-      playlist: "ir96UnkKIgA",
+      playlist: "S0zv1GMBRtE",
       fs: 0,
       cc_load_policy: 0,
       iv_load_policy: 3,

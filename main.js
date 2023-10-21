@@ -134,7 +134,7 @@ function extractVideoID(url) {
 
 let isVideoPlaying = false
 
-function playPauseMedia(mediaId) {
+function playPauseMedia(event, mediaId) {
   if (mediaId === "video") {
     if (player) {
       if (isVideoPlaying) {
@@ -146,12 +146,20 @@ function playPauseMedia(mediaId) {
       }
     }
   } else {
+    const element = event.target
+    const button = element.parentNode
     const sound = document.getElementById(mediaId)
     if (sound) {
       if (sound.paused) {
         sound.play()
+        if (button) {
+          button.classList.add("border", "rounded")
+        }
       } else {
         sound.pause()
+        if (button) {
+          button.classList.remove("border", "rounded")
+        }
       }
     }
   }

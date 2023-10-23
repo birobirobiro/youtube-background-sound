@@ -153,12 +153,12 @@ function playPauseMedia(event, mediaId) {
       if (sound.paused) {
         sound.play()
         if (button) {
-          button.classList.add("border", "rounded")
+          button.classList.add("border-inherit")
         }
       } else {
         sound.pause()
         if (button) {
-          button.classList.remove("border", "rounded")
+          button.classList.remove('border-inherit')
         }
       }
     }

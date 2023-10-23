@@ -134,7 +134,7 @@ function extractVideoID(url) {
 
 let isVideoPlaying = false
 
-function playPauseMedia(mediaId) {
+function playPauseMedia(event,mediaId) {
   if (mediaId === "video") {
     if (player) {
       if (isVideoPlaying) {
@@ -147,6 +147,8 @@ function playPauseMedia(mediaId) {
     }
   } else {
     const sound = document.getElementById(mediaId)
+    const element = event.target
+    const button = element.parentNode
     if (sound) {
       if (sound.paused) {
         sound.play()
